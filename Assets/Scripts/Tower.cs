@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    float fireRate = 2f;
-    public float nextFire = 0f;
+    float fireRate = 1f;
+    public float nextFire;
 
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
     void Update()
     {
-        nextFire++;
-
-        if(Time.time >= nextFire)
+        if(Time.time > nextFire)
         {
             Fire();
-            nextFire = 0f;
         }  
     }
 
@@ -24,7 +21,7 @@ public class Tower : MonoBehaviour
     {
         //apenas atira ou ataca
         nextFire = Time.time + fireRate;
-        GameObject a = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
+        GameObject a = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
         Destroy(a, 0.5f);
     }
 }

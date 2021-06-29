@@ -6,8 +6,6 @@ public class Bullet : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] private float bulletSpeed;
-
-    public GameObject Enemy;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -17,7 +15,6 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Enemy")
         {
-            Destroy(Enemy);
             Destroy(this.gameObject);
         }    
     }
